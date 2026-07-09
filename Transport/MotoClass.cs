@@ -1,14 +1,16 @@
+using ParkingGarage.Interfaces;
 using System;
-namespace ParkingGarage.Transport
+namespace ParkingGarage.Type
 {
-    class Moto: Transport
+    class Moto : Transport
     {
-        public Moto(int carId, string carNumber, DateTime timeCameIn)
-            : base(carId, carNumber, timeCameIn)
+        public Moto(string carNumber)
+            : base(carNumber)
         {
-
+            TimeCameIn = DateTime.Now;
         }
-        public override string TransportType() => "Moto";
+        public override bool Reserve() => false;
+        public override int HourMany() => 8;
 
     }
 }

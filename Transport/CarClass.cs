@@ -1,8 +1,8 @@
 using ParkingGarage.Interfaces;
 using System;
-namespace ParkingGarage.Transport
+namespace ParkingGarage.Type
 {
-    class Car : Transport,IParking
+    internal class Car : Transport
     {
         public Car(string carNumber)
             : base (carNumber)
@@ -12,5 +12,6 @@ namespace ParkingGarage.Transport
         public override bool Reserve() => true;
 
         public override int HourMany() => 15;
+
     }
 }

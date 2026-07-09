@@ -1,11 +1,10 @@
 using System;
 using System.Data;
 using ParkingGarage.runningProgram;
-namespace ParkingGarage.Transport
-{
+namespace ParkingGarage.Type
+{ 
     abstract class Transport
     {
-        private int _carid;
 
         private string _carNumber;
 
@@ -13,11 +12,6 @@ namespace ParkingGarage.Transport
 
         private DateTime _timeCameOut;
 
-
-        public int CarId
-        {
-            get => _carid; 
-        }
 
         public string CarNumber
         {
@@ -44,7 +38,14 @@ namespace ParkingGarage.Transport
             get => _timeCameOut;
             set
             {
-                _timeCameOut = value;
+                if (value < _timeCameIn)
+                {
+                    _timeCameIn = DateTime.Now;
+                }
+                else
+                {
+                    _timeCameIn = value;
+                }
             }
         }
         public bool Isvalid;
@@ -60,10 +61,12 @@ namespace ParkingGarage.Transport
         public DateTime Enter()
         {
             TimeCameIn = DateTime.Now;
+            return TimeCameIn;
         }
         public DateTime Exit()
         {
-           TimeCameOut = DateTime.Now;
+            TimeCameIn = DateTime.Now;
+            return TimeCameIn;
         }
 
     }
